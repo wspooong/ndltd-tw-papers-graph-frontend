@@ -7,16 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DocumentComponent: typeof import('./src/components/DocumentComponent.vue')['default']
-    DocumentViewerComponent: typeof import('./src/components/DocumentViewerComponent.vue')['default']
-    EssentialLink: typeof import('./src/components/EssentialLink.vue')['default']
-    FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']
-    GraphComponent: typeof import('./src/components/GraphComponent.vue')['default']
-    HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
-    ListDocumentComponent: typeof import('./src/components/ListDocumentComponent.vue')['default']
+    EssentialLink: typeof import('./src/components/HeaderLink.vue')['default']
+    HeaderLink: typeof import('./src/components/HeaderLink.vue')['default']
+    NetworkGraph: typeof import('./src/components/NetworkGraph.vue')['default']
+    PaperCard: typeof import('./src/components/PaperCard.vue')['default']
+    PaperList: typeof import('./src/components/PaperList.vue')['default']
+    PaperViewer: typeof import('./src/components/PaperViewer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchDocumentComponent: typeof import('./src/components/SearchDocumentComponent.vue')['default']
-    Template: typeof import('./src/components/Template.vue')['default']
+    TheFooter: typeof import('./src/components/TheFooter.vue')['default']
+    TheHeader: typeof import('./src/components/TheHeader.vue')['default']
   }
 }

@@ -15,7 +15,7 @@ declare module 'vue' {
     PaperViewer: typeof import('./src/components/PaperViewer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SearchDocumentComponent: typeof import('./src/components/SearchDocumentComponent.vue')['default']
+    SearchPaper: typeof import('./src/components/SearchPaper.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
   }

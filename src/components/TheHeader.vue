@@ -23,7 +23,7 @@ const headerLinks: HeaderLinkProps[] = [
   },
   {
     title: 'ROADMAP',
-    link: '/'
+    link: 'https://github.com/users/wspooong/projects/1/'
   }
 ];
 

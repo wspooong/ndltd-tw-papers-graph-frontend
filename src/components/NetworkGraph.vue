@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import createNetworkGraph from './NetworkGraphFunction';
 
 const props = defineProps(

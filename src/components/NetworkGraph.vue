@@ -23,11 +23,3 @@ onMounted(() => {
 
 
 </script>
-
-<style scoped>
-.network_graph {
-    width: 100%;
-    height: 100%;
-}
-
-</style>./NetworkGraphFunction

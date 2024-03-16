@@ -1,0 +1,6 @@
+version: '3'
+services:
+  ndltd-graph-frontend:
+    image: ndltd-graph-frontend
+    ports:
+      - 3000:80

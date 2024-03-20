@@ -31,6 +31,7 @@ on:
     branches: [ "main" ]
 
 env:
+  ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   ECS_TASK_DEFINITION: .github/workflows/task_defination.json # set this to the path to your Amazon ECS task definition
 
 permissions:

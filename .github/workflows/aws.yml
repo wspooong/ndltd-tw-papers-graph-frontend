@@ -32,7 +32,6 @@ on:
 
 env:
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-  ECS_TASK_DEFINITION: .github/workflows/task_defination.json # set this to the path to your Amazon ECS task definition
 
 permissions:
   contents: read
@@ -58,6 +57,10 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Download task definition
+      run: |
+        aws ecs describe-task-definition --task-definition my-task-definition-family --query taskDefinition > task-definition.json
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -75,7 +78,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ${{ env.ECS_TASK_DEFINITION }}
+        task-definition: task-definition.json
         container-name: ${{ secrets.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 

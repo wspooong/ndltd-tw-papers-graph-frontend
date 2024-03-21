@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:133622311370:task-definition/frontend:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:133622311370:task-definition/frontend:4",
     "containerDefinitions": [
         {
             "name": "frontend",
-            "image": "ndltd-tw-papers-graph/frontend",
+            "image": "133622311370.dkr.ecr.us-east-1.amazonaws.com/ndltd-tw-papers-graph:latest",
             "cpu": 0,
             "portMappings": [
                 {
@@ -36,7 +36,7 @@
     "family": "frontend",
     "executionRoleArn": "arn:aws:iam::133622311370:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 4,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -47,7 +47,13 @@
             "name": "ecs.capability.execution-role-awslogs"
         },
         {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
@@ -72,7 +78,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-03-20T13:46:38.934Z",
+    "registeredAt": "2024-03-21T02:42:54.884Z",
     "registeredBy": "arn:aws:iam::133622311370:root",
     "tags": []
 }

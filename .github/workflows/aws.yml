@@ -23,7 +23,7 @@ jobs:
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v2.0.3
       with:
-        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        envkey_VITE_API_URL: ${{ secrets.VITE_API_URL }}
   
     - name: Get current time
       uses: josStorer/get-current-time@v2.0.2

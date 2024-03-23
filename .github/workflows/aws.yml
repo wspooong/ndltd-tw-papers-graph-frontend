@@ -46,6 +46,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Create .env file
+      uses: SpicyPizza/create-envfile@v2.0.3
+      with:
+        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+  
+    - name: Get current time
+      uses: josStorer/get-current-time@v2.0.2
+      id: current-time
+      with:
+        format: YYYYMMDD-HHmmSS
+        utcOffset: "+08:00"
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -65,7 +77,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ steps.current-time.outputs.formattedTime }}
       run: |
         # Build a docker container and
         # push it to ECR so that it can

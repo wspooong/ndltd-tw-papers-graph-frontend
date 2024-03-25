@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    EssentialLink: typeof import('./src/components/HeaderLink.vue')['default']
     HeaderLink: typeof import('./src/components/HeaderLink.vue')['default']
     NetworkGraph: typeof import('./src/components/NetworkGraph.vue')['default']
     PaperCard: typeof import('./src/components/PaperCard.vue')['default']

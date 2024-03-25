@@ -23,14 +23,14 @@ jobs:
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v2.0.3
       with:
-        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        envkey_VITE_API_URL: ${{ secrets.VITE_API_URL }}
   
-    - name: Get current time
-      uses: josStorer/get-current-time@v2.0.2
-      id: current-time
-      with:
-        format: YYYYMMDD-HHmmSS
-        utcOffset: "+08:00"
+    # - name: Get current time
+    #   uses: josStorer/get-current-time@v2.0.2
+    #   id: current-time
+    #   with:
+    #     format: YYYYMMDD-HHmmSS
+    #     utcOffset: "+08:00"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -47,7 +47,8 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ steps.current-time.outputs.formattedTime }}
+        # IMAGE_TAG: ${{ steps.current-time.outputs.formattedTime }}
+        IMAGE_TAG: production
       run: |
         # Build a docker container and
         # push it to ECR so that it can
@@ -55,19 +56,3 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-
-    # - name: Fill in the new image ID in the Amazon ECS task definition
-    #   id: task-def
-    #   uses: aws-actions/amazon-ecs-render-task-definition@v1
-    #   with:
-    #     task-definition: task-definition.json
-    #     container-name: ${{ secrets.CONTAINER_NAME }}
-    #     image: ${{ steps.build-image.outputs.image }}
-
-    # - name: Deploy Amazon ECS task definition
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #   with:
-    #     task-definition: ${{ steps.task-def.outputs.task-definition }}
-    #     service: ${{ secrets.ECS_SERVICE }}
-    #     cluster: ${{ secrets.ECS_CLUSTER }}
-    #     wait-for-service-stability: true

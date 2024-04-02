@@ -52,7 +52,7 @@ async function setWindowSize() {
 }
 
 async function fetchData() {
-    const response = await fetch(`/api/v1/search_similarity_network?uid=${route.params.uid}`);
+    const response = await fetch(`/api/v1/document/similarity?uid=${route.params.uid}`);
     if (response.status != 200) {
         router.push({ name: '404' })
     }

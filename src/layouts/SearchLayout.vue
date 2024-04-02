@@ -82,7 +82,7 @@ const not_found_document = {
 
 async function fetchData() {
     query.value = route.query.q as string
-    const response = await fetch(`api/v1/search_title?query=${route.query.q}`);
+    const response = await fetch(`api/v1/document/title?query=${route.query.q}`);
     const jsonData = await response.json()
     if (response.status != 200) {
         documents.value = [error_document]

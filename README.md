@@ -1,35 +1,35 @@
-# 博碩士論文相似度網絡
+# NDLTD TW Papers Graph
 
-「博碩士論文相似度網絡」是一個基於內容的推薦系統（Content-Based Recommendation System）。  
-本推薦系統使用每個博碩士論文的「摘要」進行向量搜尋，並且選出與其相關度最高的文章。
+This project is aimed to visualize the thesis on the National Digital Library of Theses and Dissertations in Taiwan (臺灣博碩士論文知識加值系統).  
+Created by using the [D3.js](https://d3js.org) library.
 
-Inpired by:
+## Description
 
-1. <https://keywords.groundedai.company/>
-2. <https://www.connectedpapers.com/>
+This is a content-based recommendation system uses the "abstract" of each thesis for vector search, and selects the most relevant articles.
 
-## 處理步驟
-
-* Data
-  1. 博碩士論文網爬蟲（利用AWS、GCP、Azure的serverless function）
-  2. 中文預處理（CKIP斷詞系統）
-
+* Data Collection
+  * Gathering data from NDLTD by using serverless function on AWS as distributed crawler.
+  * Chinese preprocessing. ([ckiplab/ckip-transformers](https://github.com/ckiplab/ckip-transformers))
 * NLP
-  1. 建立Word2Vec Embedding Model
-  2. 計算摘要Word Vector
-  3. 計算Cosine Similarity
+  * Generate Word Embedding by using [SentenceTransformers](https://www.sbert.net/) library and [paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2) model.
+* Frontend
+  * Using Vue.js (Vuetify) as frontend framework.
+  * D3.js for data visualization.
+* Backend
+  * Opensearch as vector search database and search engine.
+  * FastAPI as backend server.
+* CI/CD
+  * Github Actions for CI/CD. ([aws.yml](https://github.com/wspooong/ndltd-tw-papers-graph-frontend/blob/main/.github/workflows/aws.yml))
 
-* 展示介面
-  1. 使用FastAPI建立API
-  2. 利用Vue.js Quasar建立展示介面
-  3. 使用D3.js繪製相似度網絡
+## Getting Started
 
-## Refs
+```bash
+git clone https://github.com/wspooong/ndltd-tw-papers-graph-frontend
+cd ndltd-tw-papers-graph-frontend
+yarn install
+yarn dev
+```
 
-* NLP部分
-  1. <https://github.com/devalindey/Recommender-Systems-using-Word-Embeddings>
-  2. <https://dylancastillo.co/nlp-snippets-cluster-documents-using-word2vec/>
-  3. <https://github.com/AmoliR/nlp-for-book-recommendation>
+## Authors
 
-* 展示頁面部分
-  1. <https://observablehq.com/@d3/force-directed-graph>
+* **Shih-Peng Wen** - [wspooong.com](https://wspooong.com)

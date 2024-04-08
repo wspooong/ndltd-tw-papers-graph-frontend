@@ -1,0 +1,1 @@
+export const _CONTENT_HEIGHT = "87vh"

@@ -15,7 +15,7 @@
                         {{ props.documentData.author }} - {{ props.documentData.graduated_academic_year }}
                     </v-card-subtitle>
                 </v-card-item>
-                <v-card-text>{{ `${props.documentData.abstract.slice(0, 100)}...` }}</v-card-text>
+                <v-card-text>{{ display_abstract }}</v-card-text>
             </v-card>
         </v-row>
     </v-container>
@@ -35,6 +35,8 @@ const props = defineProps({
         required: true,
     }
 });
+
+const display_abstract = `${props.documentData.abstract.slice(0, 100)}...`
 
 function changeFocusDocument() {
     focusDocument.setDocument(props.documentData.uid)

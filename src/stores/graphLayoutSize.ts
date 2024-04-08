@@ -4,7 +4,7 @@ export const useGraphLayoutSizeStore = defineStore('graphLayoutSize', {
     state: () => ({ 
         width: 0,
         height: 0,
-        margin: 150
+        margin: 0
      }),
     actions: {
         setBrowserWindowSize(width: number, height: number) {
